@@ -1,0 +1,9 @@
+{
+    "cSpell.words": [
+        "pychache",
+        "venv"
+    ],
+    "files.exclude": {
+        "**/venv": true
+    }
+}
