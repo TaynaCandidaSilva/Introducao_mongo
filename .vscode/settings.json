@@ -4,6 +4,7 @@
         "venv"
     ],
     "files.exclude": {
-        "**/venv": true
+        "**/venv": true,
+        "**/__pycache__": true
     }
 }
