@@ -4,7 +4,7 @@ from pymongo import MongoClient
 class DBConnectionHandler:
     def __init__(self) -> None:
         self.__connection_string = "mongodb://{}:{}@{}:{}/?authSource=admin".format(
-            "admin", "password", "localhost", "27017"
+            "admin", "admin", "localhost", "27017"
         )
 
         self.__database_name = "rocket_db"
@@ -12,7 +12,7 @@ class DBConnectionHandler:
         self.__db_connection = None
 
     def connect_to_db(self):
-        self.client = MongoClient(self.__connection_string)
+        self.__client = MongoClient(self.__connection_string)
         self.__db_connection = self.__client[self.__database_name]
 
     def get_db_connection(self):
