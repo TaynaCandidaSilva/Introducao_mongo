@@ -75,6 +75,7 @@ def test_select_many_with_multiple_filters():
         print()
 
 
+@pytest.mark.skip(reason="Interacao com o banco")
 def test_select_many_with_or_filters():
     orders_repository = OrdersRepository(conn)
     doc_filter = {
@@ -85,3 +86,11 @@ def test_select_many_with_or_filters():
     for doc in response:
         print(doc)
         print()
+
+
+def test_select_by_object_id():
+    orders_repository = OrdersRepository(conn)
+    object_id = "6780074df534dff2a1809771"
+    response = orders_repository.select_by_object_id(object_id)
+    print()
+    print(response)
