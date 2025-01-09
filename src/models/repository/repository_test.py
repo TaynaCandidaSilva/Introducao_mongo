@@ -21,6 +21,7 @@ def test_insert_list_of_documents():
     orders_repository.insert_list_of_documents(my_doc)
 
 
+@pytest.mark.skip(reason="Interacao com o banco")
 def test_select_many():
     orders_repository = OrdersRepository(conn)
     doc_filter = {"cupom": True}
@@ -33,6 +34,7 @@ def test_select_many():
         print()
 
 
+@pytest.mark.skip(reason="Interacao com o banco")
 def test_select_one():
     orders_repository = OrdersRepository(conn)
     doc_filter = {"cupom": True}
@@ -41,6 +43,7 @@ def test_select_one():
     print(response)
 
 
+@pytest.mark.skip(reason="Interacao com o banco")
 def test_select_many_with_properties():
     orders_repository = OrdersRepository(conn)
     doc_filter = {"cupom": True}
@@ -51,9 +54,33 @@ def test_select_many_with_properties():
         print()
 
 
+@pytest.mark.skip(reason="Interacao com o banco")
 def test_select_if_properties_exists():
     orders_repository = OrdersRepository(conn)
     response = orders_repository.select_if_properties_exists()
+    print()
+    for doc in response:
+        print(doc)
+        print()
+
+
+@pytest.mark.skip(reason="Interacao com o banco")
+def test_select_many_with_multiple_filters():
+    orders_repository = OrdersRepository(conn)
+    doc_filter = {"cupom": True, "itens.doce": {"$exists": True}}
+    response = orders_repository.select_many(doc_filter)
+    print()
+    for doc in response:
+        print(doc)
+        print()
+
+
+def test_select_many_with_or_filters():
+    orders_repository = OrdersRepository(conn)
+    doc_filter = {
+        "$or": [{"address": {"$exists": True}}, {"itens.doce.tipo": "chocolate"}]
+    }
+    response = orders_repository.select_many(doc_filter)
     print()
     for doc in response:
         print(doc)

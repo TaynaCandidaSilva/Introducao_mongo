@@ -28,5 +28,7 @@ class OrdersRepository:
 
     def select_if_properties_exists(self) -> dict:
         collection = self.__db_connection.get_collection(self.__collection_name)
-        response = collection.find({"address": {"$exists": True}})
+        response = collection.find(
+            {"address": {"$exists": True}}, {"id": 0, "itens": 0}
+        )
         return response

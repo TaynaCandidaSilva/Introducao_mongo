@@ -12,6 +12,7 @@ class DBConnectionHandler:
         self.__db_connection = None
 
     def connect_to_db(self):
+        print(self.__connection_string)
         self.__client = MongoClient(self.__connection_string)
         self.__db_connection = self.__client[self.__database_name]
 
