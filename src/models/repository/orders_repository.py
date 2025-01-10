@@ -48,16 +48,16 @@ class OrdersRepository:
             {"$set": {"itens.pizza.quantidade": 30}},
         )
 
-    def edit_registry(self) -> None:
-        collection = self.__db_connection.get_collection(self.__collection_name)
-        collection.update_many(
-            {"_id": ObjectId("67800628f534dff2a180976d")},
-            {"$set": {"itens.pizza.quantidade": 30}},
-        )
-
-    def edit_many_registry(self) -> None:
+    def edit_many_registries(self) -> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
         collection.update_many(
             {"itens.refrigerante": {"$exists": True}},  # Filtros
             {"$set": {"itens.refrigerante.quantidade": 100}},  # Edicao
+        )
+
+    def edit_registry_with_increment(self) -> None:
+        collection = self.__db_connection.get_collection(self.__collection_name)
+        collection.update_one(
+            {"_id": ObjectId("67800628f534dff2a180976d")},
+            {"$inc": {"itens.pizza.quantidade": 50}},
         )
