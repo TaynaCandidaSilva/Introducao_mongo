@@ -5,7 +5,7 @@ def registry_order_validator(body: any):
     body_validator = Validator(
         {
             "data": {
-                "type": dict,
+                "type": "dict",
                 "schema": {
                     "name": {"type": "string", "required": True},
                     "address": {"type": "string", "required": True},
