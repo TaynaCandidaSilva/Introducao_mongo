@@ -44,10 +44,7 @@ class OrdersRepository(OrdersRepositoryInterface):
 
     def edit_registry(self, order_id: str, update_fields: dict) -> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
-        collection.update_one(
-            {"_id": ObjectId(order_id)},
-            {"$set": {update_fields}},
-        )
+        collection.update_one({"_id": ObjectId(order_id)}, {"$set": update_fields})
 
     def edit_many_registries(self) -> None:
         collection = self.__db_connection.get_collection(self.__collection_name)
