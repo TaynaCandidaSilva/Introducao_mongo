@@ -2,6 +2,7 @@ from src.models.repository.orders_repository import OrdersRepository
 from src.main.http_types.http_request import HttpRequest
 from src.main.http_types.http_response import HttpResponse
 from src.errors.types.http_not_found import HttpNotFoundError
+from src.validators.registry_updater_validator import registry_updater_validator
 from src.errors.error_handler import error_handle
 
 
@@ -21,7 +22,7 @@ class RegistryUpdater:
             return error_handle(exception)
 
     def __validate_body(self, body: dict) -> None:
-        pass
+        registry_updater_validator(body)
 
     def __update_order(self, order_id: str, body: dict) -> None:
         update_fields = body["data"]
