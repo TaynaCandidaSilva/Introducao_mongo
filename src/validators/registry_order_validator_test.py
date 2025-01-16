@@ -22,7 +22,7 @@ def test_registry_order_validator_with_errors():
         "data": {
             "name": "Joaozinho",
             "address": "rua do limao",
-            "cupom": True,
+            "cupom": False,
             "items": [
                 {"item": "refrigerante", "quantidade": 2},
                 {"item": "pizza", "quantidade": 2},
@@ -31,4 +31,4 @@ def test_registry_order_validator_with_errors():
     }
 
     with pytest.raises(Exception):
-        registry_order_validator_with_errors(body_with_error)
+        registry_order_validator(body_with_error)
