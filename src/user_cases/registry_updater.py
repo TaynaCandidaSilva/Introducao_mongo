@@ -1,7 +1,6 @@
 from src.models.repository.interfaces.orders_repository import OrdersRepositoryInterface
 from src.main.http_types.http_request import HttpRequest
 from src.main.http_types.http_response import HttpResponse
-from src.errors.types.http_not_found import HttpNotFoundError
 from src.validators.registry_updater_validator import registry_updater_validator
 from src.errors.error_handler import error_handle
 
@@ -34,7 +33,7 @@ class RegistryUpdater:
             body={
                 "data": {
                     "order_id": order_id,
-                    "Type": "Order",
+                    "type": "Order",
                     "count": 1,
                 }
             },

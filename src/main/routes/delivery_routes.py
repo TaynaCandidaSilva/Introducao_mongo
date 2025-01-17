@@ -31,5 +31,4 @@ def registry_update(order_id):
     user_case = registry_updater_composer()
     http_request = HttpRequest(path_params={"order_id": order_id, "body": request.json})
     response = user_case.update(http_request)
-
     return jsonify(response.body), response.status_code
